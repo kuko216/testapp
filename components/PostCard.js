@@ -3,10 +3,11 @@ import styled from "styled-components";
 import oc from "open-color";
 
 import { ScrollView, RefreshControl, Text, View, Image } from "react-native";
+import FitImage from "react-native-fit-image";
 
 const PostWrapper = styled.View`
   width: 100%;
-  margin-top: 100px;
+  margin-top: 50px;
   border: 1px solid ${oc.gray[5]};
 `;
 
@@ -39,11 +40,6 @@ const Username = styled.Text`
   z-index: 1;
 `;
 
-const PostContent = styled.Image`
-  width: 100%;
-  height: 500px;
-`;
-
 const PostFooter = styled.View`
   display: flex;
   width: 100%;
@@ -56,7 +52,7 @@ const Spacer = styled.View`
   flex: 1;
 `;
 
-const PostCard = () => {
+const PostCard = ({ username, image, reaction }) => {
   return (
     <PostWrapper>
       <PostHeader>
@@ -66,17 +62,16 @@ const PostCard = () => {
               uri: "https://66.media.tumblr.com/avatar_2292ee705587_128.pnj"
             }}
           />
-          <Username>keke</Username>
+          <Username>{username}</Username>
         </AvatarSection>
       </PostHeader>
-      <PostContent
+      <FitImage
         source={{
-          uri:
-            "https://66.media.tumblr.com/02c67aa93934b871cd05d8bd53f041dd/tumblr_pwvzmaBAFC1vivgwio1_1280.png"
+          uri: image
         }}
       />
       <PostFooter>
-        <Text>반응 43개</Text>
+        <Text>반응 {reaction}개</Text>
         <Spacer />
       </PostFooter>
     </PostWrapper>

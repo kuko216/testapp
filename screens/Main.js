@@ -31,7 +31,18 @@ const dummyData = [
 ];
 
 const Main = () => {
-  return <PostCard />;
+  return (
+    <ScrollView>
+      {dummyData.map((post, idx) => (
+        <PostCard
+          username={post.username}
+          image={post.image}
+          reaction={post.reaction}
+          key={idx}
+        />
+      ))}
+    </ScrollView>
+  );
 };
 
 export default Main;
